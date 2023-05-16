@@ -1,0 +1,23 @@
+const router = require('express').Router()
+const userRoutes = require('./User.js')
+const authRoutes = require('./auth')
+const auth = require('../middleware/auth')
+const fileUploadRoutes = require('./FileUpload')
+const organizationRoutes = require('./Org')
+const nerfRoutes = require('./nerf')
+const scanRequestRoutes = require('./ScanRequest')
+const projectRoutes = require('./Project')
+const ScanRoutes = require('./Scan')
+const NotificationRoutes = require('./Notification')
+
+router.use('/api/user' , userRoutes)
+router.use('/api/auth' , authRoutes)
+router.use('/api/upload' , fileUploadRoutes)
+router.use('/api/orgs' , organizationRoutes)
+router.use('/api/nerf' , nerfRoutes)
+router.use('/api/scan-request' , auth, scanRequestRoutes)
+router.use('/api/project' , auth, projectRoutes)
+router.use('/api/scan' , auth, ScanRoutes)
+router.use('/api/notification' , auth, NotificationRoutes)
+
+module.exports = router
